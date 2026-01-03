@@ -318,7 +318,7 @@ body {
 .current-price {
     font-size: 18px;
     font-weight: bold;
-    color: #D17015;
+    color: #EF5E00;
     /* কমলা রঙের মতো */
 }
 
@@ -518,5 +518,6 @@ img:active,
 .logo1 {
     height: 50px;
     width: 50px;
+
 
 }
