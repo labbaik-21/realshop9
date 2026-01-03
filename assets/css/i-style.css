@@ -1,0 +1,522 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a,
+button,
+img,
+.clickable {
+    outline: none;
+}
+
+body {
+    font-family: roboto;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+  .navbar {
+            background-color: #F57224;
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🛒";
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-menu a:hover::after {
+            width: 80%;
+        }
+
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-bar input {
+            background: none;
+            border: none;
+            color: white;
+            outline: none;
+            width: 200px;
+            font-size: 0.9rem;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Demo content */
+        .demo-content {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .demo-content h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+        }
+
+        /* Mobile and Tablet - Hamburger Menu */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 50px;
+                flex-direction: column;
+                background: #F57224;
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.2);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .nav-menu a:hover {
+                background: rgba(255,255,255,0.15);
+                transform: none;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+         
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo::before {
+                font-size: 1.5rem;
+            }
+        }
+
+.main-heading {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* গ্রিড লেআউট তৈরি করা */
+.product-grid {
+    display: grid;
+    /* 4টি কলাম তৈরি করা হয়েছে, প্রতিটি কলাম সমান আকারের */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    /* কার্ডগুলির মধ্যে ব্যবধান */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* প্রোডাক্ট কার্ডের স্টাইল */
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    /* absolute পজিশনের জন্য */
+    overflow: hidden;
+}
+
+/* পণ্যের ছবি */
+.product-image-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* ছবি যেন কেটে না যায় */
+    border-radius: 4px;
+}
+
+/* পণ্যের তথ্য */
+.product-info {
+    padding: 0 5px 10px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    height: 40px;
+    /* নাম দুই লাইন পর্যন্ত দেখানোর জন্য */
+    overflow: hidden;
+    line-height: 1.3;
+}
+
+/* দামের বক্স */
+.price-box {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D17015;
+    /* কমলা রঙের মতো */
+}
+
+.old-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    /* কেটে দেওয়া */
+}
+
+/* 'Quick Add' বাটন */
+.add-button {
+    background-color: #f57224;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.add-button:hover {
+    background-color: #D65400;
+}
+
+/* ডিসকাউন্ট / অন সেল ট্যাগ */
+.sale-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #EF5E00;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.discount-percent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e53935;
+    /* লাল রঙের ডিসকাউন্ট ট্যাগ */
+    color: white;
+    padding: 5px 10px;
+    border-bottom-left-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.text-link {
+    font-family: Inter, "Inter Fallback";
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.text-link:hover {
+    opacity: 0.75;
+}
+
+/* মোবাইলের জন্য রেসপনসিভ ডিজাইন */
+@media (max-width: 768px) {
+    .product-grid {
+        /* ছোট স্ক্রিনে 2টি কলাম */
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .logo a {
+        margin-left: -95px;
+    }
+
+
+}
+
+@media (max-width: 576px) {
+    .product-grid {
+        /* খুব ছোট স্ক্রিনে 1টি কলাম */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s;
+    z-index: 1000;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-button svg {
+    width: 35px;
+    height: 35px;
+    fill: white;
+}
+
+
+/* Footer */
+footer {
+    background: white;
+    color: #f57224;
+    padding-top: 45px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.footer1 {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.footer2 h3 {
+    margin-bottom: 1rem;
+}
+
+.footer2 ul {
+    list-style: none;
+}
+
+.footer2 ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer2 a {
+    color: black;
+    text-decoration: none;
+}
+
+.footer2 a:hover {
+    color: #D65400;
+}
+
+.footer3 {
+    color: black;
+}
+
+.footer4 span {
+    color: black;
+}
+
+/* .whatsapp1 {
+    font-family: Hind Siliguri;
+    text-align: center;
+    background-color: #EF5E00;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1.5;
+} */
+
+.whatsapp-number {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+img:active,
+.text-link:active {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.logo1 {
+    height: 50px;
+    width: 50px;
+
+}
